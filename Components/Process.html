@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process - Ham Sab Ka Atta</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* --- THEME COLORS --- */
+        :root {
+            --brand-yellow: #F4C430;
+            --brand-brown: #5D4037;
+            --brand-dark: #2D2D2D;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #fff9e6; /* Very light yellow tint */
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .btn {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+        }
+
+        /* --- NAVBAR (Consistent) --- */
+        .navbar {
+            background-color: rgba(244, 196, 48, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white !important;
+        }
+        .nav-link {
+            color: var(--brand-brown) !important;
+            font-weight: 600;
+        }
+        .btn-back {
+            background-color: white;
+            color: var(--brand-brown);
+            border-radius: 50px;
+            font-weight: bold;
+            padding: 8px 25px;
+            transition: 0.3s;
+        }
+        .btn-back:hover {
+            background-color: var(--brand-brown);
+            color: white;
+        }
+
+        /* --- PROCESS HERO --- */
+        .page-header {
+            height: 60vh;
+            background: linear-gradient(rgba(45, 45, 45, 0.7), rgba(45, 45, 45, 0.7)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-attachment: fixed; /* Parallax Effect */
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        /* --- TIMELINE STEPS --- */
+        .step-section {
+            padding: 80px 0;
+        }
+        
+        .step-img-box {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            border: 5px solid white;
+            transform: rotate(-2deg);
+            transition: 0.3s;
+        }
+        
+        .step-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .step-row:hover .step-img-box {
+            transform: rotate(0deg) scale(1.02);
+            border-color: var(--brand-yellow);
+        }
+        
+        .step-row:hover .step-img-box img {
+            transform: scale(1.1);
+        }
+
+        /* Alternating Rotate for variety */
+        .step-row:nth-child(even) .step-img-box {
+            transform: rotate(2deg);
+        }
+        .step-row:nth-child(even):hover .step-img-box {
+            transform: rotate(0deg) scale(1.02);
+        }
+
+        .step-content {
+            padding: 20px;
+        }
+
+        .step-number {
+            font-size: 80px;
+            font-weight: 900;
+            color: rgba(244, 196, 48, 0.2);
+            line-height: 1;
+            margin-bottom: -30px;
+            position: relative;
+            z-index: 0;
+            font-family: 'Oswald', sans-serif;
+        }
+
+        .step-title {
+            position: relative;
+            z-index: 1;
+            color: var(--brand-brown);
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .step-desc {
+            font-size: 1.1rem;
+            color: #555;
+            margin-top: 15px;
+        }
+
+        /* --- FINAL CTA --- */
+        .final-cta {
+            background-color: var(--brand-yellow);
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .bg-icon {
+            position: absolute;
+            font-size: 300px;
+            color: rgba(255,255,255,0.2);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">HAM SAB KA <span style="color: var(--brand-brown);">ATTA</span></a>
+            <div class="ms-auto">
+                <a href="../index.html" class="btn btn-back"><i class="fas fa-home me-2"></i> Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container" data-aos="fade-down" data-aos-duration="1200">
+            <h4 class="text-warning ls-2">The Journey of Purity</h4>
+            <h1 class="display-3 fw-bold">Khet Se Kitchen Tak</h1>
+            <p class="lead text-white-50 mt-3">Dekhiye kaise banta hai aapka pasandeeda atta.</p>
+        </div>
+    </header>
+
+    <div class="container overflow-hidden">
+        
+        <div class="row align-items-center step-section step-row">
+            <div class="col-md-6 mb-4 mb-md-0" data-aos="fade-right" data-aos-duration="1000">
+                <div class="step-img-box">
+                    <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?q=80&w=800&auto=format&fit=crop" alt="Wheat Field">
+                </div>
+            </div>
+            <div class="col-md-6" data-aos="fade-left" data-aos-duration="1000">
+                <div class="step-content">
+                    <div class="step-number">01</div>
+                    <h2 class="step-title">The Golden Harvest</h2>
+                    <p class="step-desc">Humare process ki shuruat hoti hai khet se. Hum sirf <strong>Premium Amber Wheat</strong> select karte hain jo dhoop mein pak kar sunehri hoti hai. Sirf best grains hi humari factory tak pohanchte hain.</p>
+                    <span class="badge bg-warning text-dark mt-2">100% Organic Sourcing</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row align-items-center step-section step-row flex-md-row-reverse">
+            <div class="col-md-6 mb-4 mb-md-0" data-aos="fade-left" data-aos-duration="1000">
+                <div class="step-img-box">
+                    <img src="../Images/2nd.png" alt="Cleaning Grains">
+                </div>
+            </div>
+            <div class="col-md-6 text-md-end text-start" data-aos="fade-right" data-aos-duration="1000">
+                <div class="step-content">
+                    <div class="step-number">02</div>
+                    <h2 class="step-title">Multi-Stage Cleaning</h2>
+                    <p class="step-desc">Pisai se pehle, gandum ko 3-stage cleaning process se guzara jata hai. Mitti, kankar aur doosri impurities ko nikal kar sirf saaf shuffaf dana hi aage jata hai.</p>
+                    <span class="badge bg-dark mt-2">Zero Impurity</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row align-items-center step-section step-row">
+            <div class="col-md-6 mb-4 mb-md-0" data-aos="fade-right" data-aos-duration="1000">
+                <div class="step-img-box">
+                    <img src="../Images/3rd.png" alt="Stone Grinding">
+                </div>
+            </div>
+            <div class="col-md-6" data-aos="fade-left" data-aos-duration="1000">
+                <div class="step-content">
+                    <div class="step-number">03</div>
+                    <h2 class="step-title">Traditional Stone Grinding</h2>
+                    <p class="step-desc">Asli jaadu yahan hota hai! Hum <strong>Slow Speed Chakki</strong> use karte hain taake atta garam na ho aur uski natural nutrition (fiber aur vitamins) zaya na ho. Bilkul ghar jaisa swaad.</p>
+                    <span class="badge bg-warning text-dark mt-2">Cold Press Technology</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row align-items-center step-section step-row flex-md-row-reverse">
+            <div class="col-md-6 mb-4 mb-md-0" data-aos="fade-left" data-aos-duration="1000">
+                <div class="step-img-box">
+                    <img src="../Images/4th.png" alt="Final Roti">
+                </div>
+            </div>
+            <div class="col-md-6 text-md-end text-start" data-aos="fade-right" data-aos-duration="1000">
+                <div class="step-content">
+                    <div class="step-number">04</div>
+                    <h2 class="step-title">Sealed Freshness</h2>
+                    <p class="step-desc">Tayyar atta foran hygienic bags mein pack kiya jata hai. Humara 'Fresh-Lock' bag moisture ko andar nahi aane deta, taake jab aap roti banayein to wo phooli hui aur naram bane.</p>
+                    <span class="badge bg-dark mt-2">Ready to Deliver</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <section class="final-cta">
+        <i class="fas fa-wheat-awn bg-icon"></i>
+        <div class="container position-relative" style="z-index: 2;">
+            <h2 class="display-4 fw-bold text-dark mb-4">Taste the Purity Yourself</h2>
+            <p class="fs-4 mb-5 text-dark">Ab intezar kis baat ka? Order karein aur farq dekhein.</p>
+            <a href="index.html#buy" class="btn btn-dark btn-lg rounded-pill px-5 py-3 shadow-lg">
+                <i class="fas fa-shopping-cart me-2"></i> Place Order Now
+            </a>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            offset: 120, // offset (in px) from the original trigger point
+            delay: 0, // values from 0 to 3000, with step 50ms
+            duration: 1000, // values from 0 to 3000, with step 50ms
+            easing: 'ease', // default easing for AOS animations
+            once: false, // whether animation should happen only once - while scrolling down
+        });
+    </script>
+</body>
+</html>

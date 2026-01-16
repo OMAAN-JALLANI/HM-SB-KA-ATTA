@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews - Ham Sab Ka Atta</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --brand-yellow: #F4C430;
+            --brand-brown: #5D4037;
+            --brand-dark: #2D2D2D;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f8f5e6; /* Creamy background */
+            background-image: radial-gradient(#F4C430 0.5px, transparent 0.5px);
+            background-size: 20px 20px; /* Subtle dots pattern */
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .btn { font-family: 'Oswald', sans-serif; text-transform: uppercase; }
+
+        /* --- NAVBAR --- */
+        .navbar {
+             background-color: rgba(244, 196, 48, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .navbar-brand { 
+             font-size: 1.8rem;
+            font-weight: bold;
+            color: white !important; 
+        }
+        .btn-back {
+            background: white;
+            color: var(--brand-brown);
+            border-radius: 50px;
+            font-weight: bold;
+            padding: 8px 25px;
+            transition: 0.3s;
+        }
+        .btn-back:hover { background: var(--brand-brown); color: var(--brand-yellow); }
+
+        /* --- MARQUEE (Chalti hui patti) --- */
+        .marquee-container {
+            background: var(--brand-brown);
+            color: var(--brand-yellow);
+            padding: 15px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            transform: rotate(-1deg) scale(1.05); /* Thora terha stylish look */
+            margin-top: 80px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .marquee-content {
+            display: inline-block;
+            animation: scroll 20s linear infinite;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+        }
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* --- MASONRY LAYOUT (Water fall style) --- */
+        .review-wall {
+            column-count: 3;
+            column-gap: 25px;
+            padding: 20px;
+        }
+        @media (max-width: 992px) { .review-wall { column-count: 2; } }
+        @media (max-width: 576px) { .review-wall { column-count: 1; } }
+
+        /* --- CHAT BUBBLE CARD --- */
+        .review-bubble {
+            background: white;
+            padding: 25px;
+            border-radius: 20px 20px 20px 0; /* Chat bubble shape */
+            margin-bottom: 25px;
+            box-shadow: 5px 10px 30px rgba(0,0,0,0.05);
+            break-inside: avoid;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid var(--brand-yellow);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Float Animation - Bubbles hawa mein hilenge */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Odd cards thora alag move karein */
+        .review-bubble:nth-child(odd) { animation-duration: 7s; }
+        .review-bubble:nth-child(even) { animation-duration: 5s; }
+
+        .review-bubble:hover {
+            transform: scale(1.05) !important;
+            box-shadow: 0 20px 40px rgba(244, 196, 48, 0.2);
+            z-index: 10;
+            background: #fff;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .user-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--brand-yellow);
+            margin-right: 15px;
+        }
+        .stars { color: var(--brand-yellow); font-size: 0.9rem; }
+        .review-text { color: #555; font-style: italic; line-height: 1.6; }
+        .verified-badge {
+            font-size: 0.8rem;
+            color: #28a745;
+            margin-left: auto;
+        }
+
+        /* Highlight Card Style */
+        .bubble-highlight {
+            background: var(--brand-brown);
+            color: white;
+            border-left: 5px solid white;
+        }
+        .bubble-highlight .review-text { color: #ddd; }
+        .bubble-highlight .user-name { color: var(--brand-yellow); }
+
+        /* --- BOTTOM CTA --- */
+        .write-review-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--brand-yellow);
+            color: var(--brand-brown);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            z-index: 100;
+            transition: 0.3s;
+            animation: bounce 2s infinite;
+        }
+        .write-review-btn:hover { transform: scale(1.1); color: white; }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar fixed-top">
+        <div class="container">
+           <a class="navbar-brand" href="../index.html">HAM SAB KA <span style="color: var(--brand-brown);">ATTA</span></a>
+            <a href="../index.html" class="btn btn-back"><i class="fas fa-home me-2"></i> Home</a>
+        </div>
+    </nav>
+
+    <div class="marquee-container">
+        <div class="marquee-content">
+            <i class="fas fa-star"></i> 5000+ HAPPY FAMILIES &nbsp;&nbsp;&bull;&nbsp;&nbsp; 
+            <i class="fas fa-wheat-awn"></i> 100% PURE CHAKKI ATTA &nbsp;&nbsp;&bull;&nbsp;&nbsp; 
+            <i class="fas fa-heart"></i> LOVED BY MOTHERS &nbsp;&nbsp;&bull;&nbsp;&nbsp; 
+            <i class="fas fa-star"></i> 5000+ HAPPY FAMILIES &nbsp;&nbsp;&bull;&nbsp;&nbsp; 
+            <i class="fas fa-wheat-awn"></i> 100% PURE CHAKKI ATTA &nbsp;&nbsp;&bull;&nbsp;&nbsp; 
+            <i class="fas fa-heart"></i> LOVED BY MOTHERS &nbsp;&nbsp;&bull;&nbsp;&nbsp; 
+        </div>
+    </div>
+
+    <div class="container text-center mb-5" data-aos="fade-up">
+        <h2 class="display-4 fw-bold" style="color: var(--brand-dark);">Dil Se Reviews <i class="fas fa-heart text-danger"></i></h2>
+        <p class="text-muted lead">Logon ka bharosa, unhi ke alfazon mein.</p>
+    </div>
+
+    <div class="container">
+        <div class="review-wall">
+
+            <div class="review-bubble" data-aos="fade-up" data-aos-delay="100">
+                <div class="user-profile">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" class="user-img" alt="User">
+                    <div>
+                        <h6 class="fw-bold m-0 user-name">Saima Baji</h6>
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    </div>
+                    <span class="verified-badge"><i class="fas fa-check-circle"></i> Verified</span>
+                </div>
+                <p class="review-text">"Pehli baar online atta mangwaya tha, dar lag raha tha. Lekin roti itni naram bani ke maza aa gaya. Ab har mahinay yehi ayega!"</p>
+            </div>
+
+            <div class="review-bubble bubble-highlight" data-aos="fade-up" data-aos-delay="200">
+                <div class="user-profile">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" class="user-img" alt="User">
+                    <div>
+                        <h6 class="fw-bold m-0 user-name">Rizwan Ahmed</h6>
+                        <div class="stars text-warning"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    </div>
+                    <span class="verified-badge text-light"><i class="fas fa-check-circle"></i> Verified</span>
+                </div>
+                <p class="review-text">"Packaging 10/10. Quality 10/10. Sab se achi baat ye hai ke isme milawat nahi hai. Bilkul gaon jaisa chakki ka atta hai."</p>
+                <div class="mt-3 text-end text-warning fs-3"><i class="fas fa-thumbs-up"></i></div>
+            </div>
+
+            <div class="review-bubble" data-aos="fade-up" data-aos-delay="300">
+                <div class="user-profile">
+                    <img src="https://randomuser.me/api/portraits/women/65.jpg" class="user-img" alt="User">
+                    <div>
+                        <h6 class="fw-bold m-0 user-name">Mrs. Khan</h6>
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    </div>
+                </div>
+                <p class="review-text">"Bohat acha hai. Bachay shauq se roti kha letay hain kyun ke ye hard nahi hoti subah tak."</p>
+            </div>
+
+            <div class="review-bubble" data-aos="fade-up" data-aos-delay="150">
+                <div class="user-profile">
+                    <img src="https://randomuser.me/api/portraits/men/85.jpg" class="user-img" alt="User">
+                    <div>
+                        <h6 class="fw-bold m-0 user-name">Tariq Mehmood</h6>
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    </div>
+                    <span class="verified-badge"><i class="fas fa-check-circle"></i> Verified</span>
+                </div>
+                <p class="review-text">"Fast delivery! Order kiya aur aglay din subah ghar par tha. Excellent service Ham Sab Ka Atta team!"</p>
+            </div>
+
+            <div class="review-bubble" data-aos="fade-up" data-aos-delay="250">
+                <div class="user-profile">
+                    <img src="https://randomuser.me/api/portraits/women/12.jpg" class="user-img" alt="User">
+                    <div>
+                        <h6 class="fw-bold m-0 user-name">Amna Bibi</h6>
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                    </div>
+                </div>
+                <p class="review-text">"Atta acha hai, lekin 5kg wala pack bhi introduce karwain please. Humari family choti hai."</p>
+            </div>
+
+            <div class="review-bubble bubble-highlight" data-aos="fade-up" data-aos-delay="350">
+                <div class="user-profile">
+                    <img src="https://randomuser.me/api/portraits/men/55.jpg" class="user-img" alt="User">
+                    <div>
+                        <h6 class="fw-bold m-0 user-name">Chef Gulzar (Fan)</h6>
+                        <div class="stars text-warning"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    </div>
+                </div>
+                <p class="review-text">"As a professional chef, I recommend this. Parathas crispy bantay hain aur Phulka soft. Perfect blend!"</p>
+            </div>
+
+        </div>
+    </div>
+
+    <a href="#contact" class="write-review-btn" title="Write a Review">
+        <i class="fas fa-pen-nib"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
+</body>
+</html>

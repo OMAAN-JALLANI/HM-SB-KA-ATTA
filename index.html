@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ham Sab Ka Atta - Premium Quality</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* --- CUSTOM CSS VARIABLES --- */
+        :root {
+            --brand-yellow: #F4C430; /* Bag Color */
+            --brand-brown: #5D4037;  /* Text Color */
+            --brand-dark: #2D2D2D;
+            --brand-light: #fff9e6;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .nav-link, .btn {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+        }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            background-color: rgba(244, 196, 48, 0.95); /* Yellow with transparency */
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white !important;
+        }
+        .nav-link {
+            color: var(--brand-brown) !important;
+            font-weight: 600;
+            margin: 0 10px;
+            transition: 0.3s;
+        }
+        .nav-link:hover {
+            color: white !important;
+        }
+        .btn-order {
+            background-color: var(--brand-brown);
+            color: white;
+            border-radius: 50px;
+            padding: 8px 25px;
+            border: 2px solid var(--brand-brown);
+        }
+        .btn-order:hover {
+            background-color: transparent;
+            color: var(--brand-brown);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero-section {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        /* Video Background Support */
+        .video-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        /* --- IMPACT SECTION (Global Taste) --- */
+        .impact-section {
+            background-color: var(--brand-light);
+            padding: 80px 0;
+            position: relative;
+            background-image: radial-gradient(var(--brand-yellow) 1px, transparent 1px);
+            background-size: 20px 20px; /* Dotted Pattern */
+        }
+        .impact-box {
+            background: white;
+            border-left: 5px solid var(--brand-brown);
+            padding: 40px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+            border-radius: 0 20px 20px 0;
+            position: relative;
+        }
+        .impact-box::before {
+            content: '\f72e'; /* Wheat Icon */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: -25px;
+            right: 30px;
+            font-size: 50px;
+            color: var(--brand-yellow);
+            background: white;
+            padding: 10px;
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .multi-lang-text {
+            font-style: italic;
+            color: #666;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* --- PROCESS SECTION (New Card Style) --- */
+        .process-section {
+            padding: 100px 0;
+            background: linear-gradient(180deg, #fff 0%, #fff9e6 100%);
+        }
+        
+        .process-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 25px;
+            text-align: center;
+            position: relative;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+            overflow: hidden;
+            z-index: 1;
+            margin-bottom: 30px;
+        }
+
+        /* Number Watermark behind card */
+        .process-number {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 100px;
+            font-weight: 900;
+            color: rgba(244, 196, 48, 0.15); /* Faint Yellow */
+            font-family: 'Oswald', sans-serif;
+            z-index: -1;
+            transition: 0.4s;
+        }
+
+        .process-icon-box {
+            width: 80px;
+            height: 80px;
+            background: var(--brand-yellow);
+            color: var(--brand-brown);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            margin: 0 auto 20px auto;
+            box-shadow: 0 10px 20px rgba(244, 196, 48, 0.4);
+            transition: transform 0.4s;
+        }
+
+        .process-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-bottom: 5px solid var(--brand-brown);
+        }
+
+        .process-card:hover .process-icon-box {
+            transform: rotateY(180deg);
+            background: var(--brand-brown);
+            color: var(--brand-yellow);
+        }
+
+        .process-card:hover .process-number {
+            color: rgba(244, 196, 48, 0.3);
+            transform: scale(1.1);
+        }
+
+        /* --- REVIEWS --- */
+        .review-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            border-left: 4px solid var(--brand-yellow);
+        }
+
+        /* --- PRE-FOOTER (BUY) --- */
+        .cta-section {
+            background-color: var(--brand-yellow);
+            padding: 60px 0;
+        }
+        .cta-img {
+            max-width: 100%;
+            height: 300px;
+            border-radius: 15px; 
+            transform: rotate(-3deg);
+            transition: 0.3s;
+        }
+        .cta-img:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: white;
+            color: white;
+            padding-top: 60px;
+        }
+        footer h5 {
+            color: var(--brand-yellow);
+            margin-bottom: 20px;
+        }
+        .footer-link {
+            color: #bbb;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .footer-link:hover {
+            color: var(--brand-yellow);
+            padding-left: 5px;
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 250px;
+            border-radius: 10px;
+        }
+
+        /* --- WHATSAPP BUTTON --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">HAM SAB KA <span style="color: var(--brand-brown);">ATTA</span></a>
+            <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="./Components/Blog.html">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./Components/Global.html">Global Taste</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./Components/Process.html">Process</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./Components/Reviews.html">Reviews</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <a href="./Components/Order.html" class="btn btn-order">Order Now</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero-section">
+        <div class="container" data-aos="fade-up">
+            <h3 class="text-warning mb-3 ls-2">Preparation Des Pains Du Monde</h3>
+            <h1 class="display-1 fw-bold mb-4">HAM SAB KA ATTA</h1>
+            <p class="lead mb-5 d-none d-md-block">Shudh, Taaza, aur Pure Gandum se tayyar karda.</p>
+            <a href="./Components/Process.html" class="btn btn-outline-light btn-lg rounded-pill px-5 me-2">Our Process</a>
+            <a href="./Components/Order.html" class="btn btn-warning btn-lg rounded-pill px-5 text-dark fw-bold shadow">Buy Now</a>
+        </div>
+    </section>
+
+    <section id="impact" class="impact-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 mx-auto" data-aos="zoom-in">
+                    <div class="text-center mb-5">
+                        <h2 class="fw-bold" style="color: var(--brand-brown);">A Global Taste / Dunya Bhar Ka Swaad</h2>
+                        <div style="width: 60px; height: 3px; background: var(--brand-yellow); margin: 10px auto;"></div>
+                    </div>
+                    
+                    <div class="impact-box">
+                        <p class="multi-lang-text text-center">
+                            "Farine de Blé - Wheat Flour - Weizenmehl - Farina di Grano <br> 
+                            Harina de Trigo - Gehun ka Atta - Godhumai Maavu"
+                        </p>
+                        <hr class="my-4" style="color: var(--brand-yellow); opacity: 0.5;">
+                        <p class="text-center text-dark fw-bold mb-0">
+                            Suitable for every kitchen, from local homes to international bakeries.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="process" class="process-section">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-down">
+                <span class="text-warning fw-bold letter-spacing-2">FROM FARM TO TABLE</span>
+                <h2 class="display-5 fw-bold" style="color: var(--brand-dark);">How We Make It Pure</h2>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="process-card">
+                        <div class="process-number">01</div>
+                        <div class="process-icon-box">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <h4 class="mb-3">Premium Sourcing</h4>
+                        <p class="text-muted">Hum sirf behtareen quality ki golden gandum select karte hain jo seedha kisan se aati hai.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="process-card">
+                        <div class="process-number">02</div>
+                        <div class="process-icon-box">
+                            <i class="fas fa-mortar-pestle"></i>
+                        </div>
+                        <h4 class="mb-3">Stone Grinding</h4>
+                        <p class="text-muted">Traditional Chakki grinding process taake gandum ki natural nutrition aur fiber zaya na ho.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="process-card">
+                        <div class="process-number">03</div>
+                        <div class="process-icon-box">
+                            <i class="fas fa-box-open"></i>
+                        </div>
+                        <h4 class="mb-3">Hygienic Packing</h4>
+                        <p class="text-muted">Automatic packaging ensure karti hai ke atta aap tak fresh aur bina kisi milaawat ke pohnchay.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-dark text-white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-4 mb-md-0" data-aos="fade-right">
+                    <img src="https://images.unsplash.com/photo-1627485937980-221c88ac04f9?q=80&w=800&auto=format&fit=crop" class="img-fluid rounded shadow-lg border border-warning" alt="Roti">
+                </div>
+                <div class="col-md-6" data-aos="fade-left">
+                    <h2 class="text-warning mb-4">Why Choose Us?</h2>
+                    <ul class="list-unstyled">
+                        <li class="mb-3 fs-5"><i class="fas fa-check-circle text-warning me-2"></i> 100% Whole Wheat (Choker wala Atta)</li>
+                        <li class="mb-3 fs-5"><i class="fas fa-check-circle text-warning me-2"></i> Soft Rotis that stay fresh longer</li>
+                        <li class="mb-3 fs-5"><i class="fas fa-check-circle text-warning me-2"></i> No added chemicals</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold" style="color: var(--brand-dark);">Public Reviews</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="flip-left">
+                    <div class="review-card">
+                        <div class="text-warning mb-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="fst-italic">"Roti waqai naram banti hai aur taste bhi pure hai. Best atta in the market!"</p>
+                        <h6 class="fw-bold">- Ali Khan</h6>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="flip-left" data-aos-delay="100">
+                    <div class="review-card">
+                        <div class="text-warning mb-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="fst-italic">"Packaging dekh kar order kiya tha, lekin quality ne fan bana diya."</p>
+                        <h6 class="fw-bold">- Sara Ahmed</h6>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="flip-left" data-aos-delay="200">
+                    <div class="review-card">
+                        <div class="text-warning mb-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                        <p class="fst-italic">"Highly recommended. Delivery bhi time par milti hai."</p>
+                        <h6 class="fw-bold">- Usman Zafar</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="buy" class="cta-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-5 text-center mb-4 mb-md-0" data-aos="fade-right">
+                    <img src="./Images/contact.png" class="cta-img" alt="Atta Bag">
+                </div>
+                <div class="col-md-7 text-dark" data-aos="fade-left">
+                    <h2 class="display-4 fw-bold mb-3">Aaj Hi Order Karein!</h2>
+                    <p class="fs-4 mb-4">Ghar bethay mangwayein shudh aur taaza atta.</p>
+                    <a href="./Components/Order.html" class="btn btn-dark btn-lg rounded-pill px-5 py-3 shadow-lg">
+                        <i class="fas fa-shopping-cart me-2"></i> Buy Atta Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container" >
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="fw-bold">HAM SAB KA ATTA</h5>
+                    <p class="text-muted" >Providing the highest quality wheat flour to households across the region. Pure taste, pure health.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Contact Us</h5>
+                    <ul class="list-unstyled text-muted">
+                        <li><i class="fas fa-phone-alt text-warning me-2"></i> +92 300 1234567</li>
+                        <li><i class="fas fa-envelope text-warning me-2"></i> info@hamsabkaatta.com</li>
+                        <li><i class="fas fa-map-marker-alt text-warning me-2"></i> Industrial Area, City Name</li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4 map-container">
+                    <h5>Find Us</h5>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13606.513476831093!2d74.3039!3d31.5204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzHCsDMxJzEzLjQiTiA3NMKwMTgnMTQuMCJF!5e0!3m2!1sen!2s!4v1620000000000!5m2!1sen!2s" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+            <div class="text-center py-4 border-top border-secondary mt-4">
+                <small class="text-muted">&copy; 2026 Ham Sab Ka Atta. All rights reserved.</small>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/923000000000" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
+</body>
+</html>
